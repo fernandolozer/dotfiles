@@ -384,6 +384,15 @@
       }
     ]
   },
+  "Claude": {
+    "floating": [
+      {
+        "kind": "Exe",
+        "id": "Claude.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
   "Clementine": {
     "tray_and_multi_window": [
       {
@@ -686,6 +695,15 @@
       {
         "kind": "Exe",
         "id": "EpicGamesLauncher.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
+  "Espanso": {
+    "ignore": [
+      {
+        "kind": "Exe",
+        "id": "espanso.exe",
         "matching_strategy": "Equals"
       }
     ]
@@ -1886,6 +1904,11 @@
         "kind": "Exe",
         "id": "openvpn.exe",
         "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Exe",
+        "id": "OpenVPNConnect.exe",
+        "matching_strategy": "Equals"
       }
     ]
   },
@@ -2310,12 +2333,41 @@
         "kind": "Class",
         "id": "Chrome_RenderWidgetHostHWND",
         "matching_strategy": "Legacy"
-      }
+      },
+      {
+        "kind": "Title",
+        "id": "Slack call",
+        "matching_strategy": "Contains"
+      },
+      [
+        {
+          "kind": "Exe",
+          "id": "slack.exe",
+          "matching_strategy": "Equals"
+        },
+        {
+          "kind": "Class",
+          "id": "Chrome_WidgetWin_1",
+          "matching_strategy": "Equals"
+        },
+        {
+          "kind": "Title",
+          "id": "Slack",
+          "matching_strategy": "Equals"
+        }
+      ]
     ],
     "tray_and_multi_window": [
       {
         "kind": "Exe",
         "id": "slack.exe",
+        "matching_strategy": "Equals"
+      }
+    ],
+    "floating": [
+      {
+        "kind": "Class",
+        "id": "SingleWindowBorderClass",
         "matching_strategy": "Equals"
       }
     ]

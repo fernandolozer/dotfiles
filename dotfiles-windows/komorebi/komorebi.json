@@ -1,9 +1,9 @@
 {
   "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.38/schema.json",
-  "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
+  "app_specific_configuration_path": "C:/Users/Fernando/Documents/dotfiles/dotfiles-windows/komorebi/applications.json",
   "bar_configurations": [
-    "C:/Users/Fernando/.config/komorebi/komorebi.bar.vertical.json",
-    "C:/Users/Fernando/.config/komorebi/komorebi.bar.main.json"
+    "C:/Users/Fernando/Documents/dotfiles/dotfiles-windows/komorebi/komorebi.bar.json",
+    "C:/Users/Fernando/Documents/dotfiles/dotfiles-windows/komorebi/komorebi.bar.1.json"
   ],
   "window_hiding_behaviour": "Cloak",
   "cross_monitor_move_behaviour": "Insert",
@@ -37,11 +37,31 @@
     "style": "EaseOutSine"
   },
 
-  "display_index_preferences": {
-    "0": "29J0P97N00MT",
-    "1": "29J0P9AJ1NRT"
-  },
   "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "I",
+          "layout": "RightMainVerticalStack"
+        },
+        {
+          "name": "II",
+          "layout": "RightMainVerticalStack"
+        },
+        {
+          "name": "III",
+          "layout": "RightMainVerticalStack"
+        },
+        {
+          "name": "IV",
+          "layout": "RightMainVerticalStack"
+        },
+        {
+          "name": "V",
+          "layout": "RightMainVerticalStack"
+        }
+      ]
+    },
     {
       "workspaces": [
         {
@@ -54,15 +74,15 @@
         },
         {
           "name": "III",
-          "layout": "HorizontalStack"
-        }
-      ]
-    },
-    {
-      "workspaces": [
+          "layout": "VerticalStack"
+        },
         {
-          "name": "I",
-          "layout": "Rows"
+          "name": "IV",
+          "layout": "VerticalStack"
+        },
+        {
+          "name": "V",
+          "layout": "VerticalStack"
         }
       ]
     }
