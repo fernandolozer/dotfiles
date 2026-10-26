@@ -73,7 +73,7 @@ try "RPM Fusion nonfree" \
         "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm"
 
 try "Brave Browser repo" \
-    sudo dnf config-manager addrepo \
+    sudo dnf config-manager addrepo --overwrite \
         --from-repofile=https://brave-browser-rpm-release.s3.brave.com/brave-browser.repo
 
 try "Joplin COPR" \
@@ -87,7 +87,11 @@ section "DNF packages"
 # Add extra repository
 sudo dnf install -y --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release
 
-sudo dnf install -y \
+# RPM Fusion's ffmpeg conflicts with Fedora's preinstalled ffmpeg-free.
+# Swap it first so the install below doesn't abort.
+sudo dnf swap -y ffmpeg-free ffmpeg --allowerasing || true
+
+sudo dnf install -y --skip-broken \
     curl \
     git \
     git-credential-libsecret \
@@ -97,8 +101,7 @@ sudo dnf install -y \
     yazi \
     gh \
     ffmpeg \
-    p7zip \
-    p7zip-plugins \
+    7zip \
     unrar \
     xclip \
     btop \
@@ -123,22 +126,18 @@ espanso start
 
 section "Direct RPM installs"
 
-try_if_missing "Obsidian" obsidian \
-    install_github_rpm "obsidianmd/obsidian-releases" "x86_64.rpm"
+# Obsidian no longer ships an RPM — use the official Flatpak instead
+if flatpak info md.obsidian.Obsidian &>/dev/null; then
+    echo "  → Obsidian already installed, skipping"
+else
+    try "Obsidian (Flatpak)" flatpak install -y flathub md.obsidian.Obsidian
+fi
 
-# Slack — follow their download redirect to get the latest RPM URL
-if command -v slack &>/dev/null; then
+# Slack's RPM download URL is no longer stable — use the official Flatpak instead
+if flatpak info com.slack.Slack &>/dev/null; then
     echo "  → Slack already installed, skipping"
 else
-    echo "  → Slack"
-    SLACK_URL=$(curl -sI "https://slack.com/ssb/download-linux-x64-rpm" \
-        | grep -i "^location:" | tr -d '\r' | awk '{print $2}')
-    if [ -n "$SLACK_URL" ]; then
-        try "Slack" sudo dnf install -y "$SLACK_URL"
-    else
-        echo "  ✗ FAILED: Slack (could not resolve download URL)"
-        FAILED_STEPS+=("Slack — install manually from https://slack.com/downloads/linux")
-    fi
+    try "Slack (Flatpak)" flatpak install -y flathub com.slack.Slack
 fi
 
 # ── Flatpak (LocalSend only) ──────────────────────────────────────────────────
@@ -149,13 +148,13 @@ try "Flathub remote" \
     flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 try "LocalSend" \
-    flatpak install -y flathub io.github.localsend.localsend_app
+    flatpak install -y flathub org.localsend.localsend_app
 
 # ── oh-my-zsh + Powerlevel10k ─────────────────────────────────────────────────
 
 section "oh-my-zsh + Powerlevel10k"
 
-if [ -d "$HOME/.oh-my-zsh" ]; then
+if [ -f "$HOME/.oh-my-zsh/oh-my-zsh.sh" ]; then
     echo "  → oh-my-zsh already installed, skipping"
 else
     try "oh-my-zsh install" \
@@ -170,7 +169,22 @@ else
         git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$P10K_DIR"
 fi
 
+# ── MesloLGM Nerd Font ────────────────────────────────────────────────────────
+
+section "MesloLGM Nerd Font"
+
+FONT_DIR="$HOME/.local/share/fonts/MesloLGM"
+if fc-list 2>/dev/null | grep -iF "MesloLGM Nerd Font" >/dev/null; then
+    echo "  → MesloLGM Nerd Font already installed, skipping"
+else
+    mkdir -p "$FONT_DIR"
+    try "MesloLGM Nerd Font" bash -c \
+        'curl -fsSL -o /tmp/Meslo.zip https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Meslo.zip \
+         && 7z x -y -o"$1" /tmp/Meslo.zip > /dev/null && fc-cache -f' _ "$FONT_DIR"
+fi
+
 # ── nvm + Node ────────────────────────────────────────────────────────────────
+
 section "nvm + Node"
 
 # nvm is a shell function, not a binary — check for the directory instead
@@ -201,7 +215,11 @@ try "gem update" gem update --system
 # ── Yazi ─────────────────────────────────────────────────────────────────────
 
 section "Yazi"
-try "Yazi Dracula flavor" ya pkg add --force yazi-rs/flavors:dracula
+if ya pkg list 2>/dev/null | grep -F 'yazi-rs/flavors:dracula' >/dev/null; then
+    echo "  → Yazi Dracula flavor already installed, skipping"
+else
+    try "Yazi Dracula flavor" ya pkg add yazi-rs/flavors:dracula
+fi
 
 # ── Kanata ───────────────────────────────────────────────────────────────────
 
@@ -238,7 +256,7 @@ fi
 # ── Default shell ─────────────────────────────────────────────────────────────
 
 section "Default shell"
-try "Set zsh as default shell" chsh -s "$(which zsh)"
+try "Set zsh as default shell" sudo chsh -s "$(which zsh)" "$USER"
 
 # ── Summary ───────────────────────────────────────────────────────────────────
 

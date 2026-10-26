@@ -53,7 +53,7 @@ if ! command -v zsh &>/dev/null; then
     sudo dnf install -y zsh
 fi
 if [ "$SHELL" != "$(which zsh)" ]; then
-    chsh -s "$(which zsh)"
+    sudo chsh -s "$(which zsh)" "$USER"
     echo "Default shell set to zsh — log out and back in for it to take effect"
 else
     echo "zsh already the default shell"

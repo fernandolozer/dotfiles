@@ -4,7 +4,7 @@ Documentation=https://github.com/jtroo/kanata
 
 [Service]
 Type=simple
-ExecStart=/usr/local/bin/kanata --cfg %h/.config/kanata/kanata.kbd
+ExecStart=/usr/bin/kanata --cfg %h/.config/kanata/kanata.kbd
 Restart=on-failure
 RestartSec=3
 

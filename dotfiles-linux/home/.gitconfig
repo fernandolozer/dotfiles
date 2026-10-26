@@ -97,7 +97,7 @@
     autoSetupRemote = true
 
 [credential]
-    helper = /usr/lib/git-core/git-credential-libsecret
+    helper = /usr/libexec/git-core/git-credential-libsecret
 [user]
 	email = 1848157+fernandolozer@users.noreply.github.com
 	name = Fernando

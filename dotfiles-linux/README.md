@@ -40,10 +40,8 @@ This script:
 - Adds the official Brave Browser dnf repo
 - Enables the Joplin community COPR
 - Installs CLI tools and GUI apps via `dnf`: `git`, `neovim`, `fastfetch`, `yazi`, `gh`, `zsh`, `btop`, `firefox`, `brave-browser`, `celluloid`, `bottles`, `flatseal`, `joplin`, etc.
-- Installs GitKraken and Obsidian via direct RPM download
-- Attempts to install Slack via their RPM download (prints manual instructions if it fails)
-- Installs LocalSend via Flatpak (only app with no stable RPM path)
-- Installs `oh-my-posh` and the MesloLGM Nerd Font
+- Installs Obsidian and Slack via Flatpak (no stable RPM path)
+- Installs Powerlevel10k (via oh-my-zsh) and the MesloLGM Nerd Font
 - Installs `nvm` and the latest Node LTS
 - Installs the Yazi Dracula flavor
 - Checks for an existing SSH key in `~/.ssh` — generates one if none is found
@@ -71,7 +69,7 @@ Any existing files that would be overwritten are backed up with a `.bak` extensi
 
 ## After setup
 
-Open a new terminal. Your zsh prompt will load `oh-my-posh`. If the font looks broken, set the terminal font to **MesloLGM Nerd Font** in your terminal's settings.
+Open a new terminal. Your zsh prompt will load `powerlevel10k`. If the font looks broken, set the terminal font to **MesloLGM Nerd Font** in your terminal's settings (it is installed under `~/.local/share/fonts/MesloLGM`).
 
 To update everything at once:
 
