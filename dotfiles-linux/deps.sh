@@ -123,9 +123,6 @@ espanso start
 
 section "Direct RPM installs"
 
-try_if_missing "Obsidian" obsidian \
-    install_github_rpm "obsidianmd/obsidian-releases" "x86_64.rpm"
-
 # Slack — follow their download redirect to get the latest RPM URL
 if command -v slack &>/dev/null; then
     echo "  → Slack already installed, skipping"

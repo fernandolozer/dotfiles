@@ -21,5 +21,10 @@ New-Item -ItemType Directory -Path $yaziDestDir -Force | Out-Null
 
 Copy-Item -Path ./yazi/** -Destination $yaziDestDir -Recurse -Force
 
+$zedDestDir = Join-Path $env:APPDATA "Zed"
+New-Item -ItemType Directory -Path $zedDestDir -Force | Out-Null
+
+Copy-Item -Path "../zed/keymap.json" -Destination "$zedDestDir/keymap.json" -Force
+
 Remove-Variable componentDir
 Remove-Variable profileDir

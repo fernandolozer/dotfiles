@@ -47,6 +47,11 @@ mkdir -p "$HOME/.config/yazi"
 link "$DOTFILES_DIR/yazi/yazi.toml"               "$HOME/.config/yazi/yazi.toml"
 link "$DOTFILES_DIR/yazi/theme.toml"              "$HOME/.config/yazi/theme.toml"
 
+### Zed
+echo "Linking Zed keymap..."
+mkdir -p "$HOME/.config/zed"
+link "$(dirname "$DOTFILES_DIR")/zed/keymap.json" "$HOME/.config/zed/keymap.json"
+
 ### Zsh
 echo "Setting up zsh..."
 if ! command -v zsh &>/dev/null; then
