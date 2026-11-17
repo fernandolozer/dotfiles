@@ -40,6 +40,7 @@ echo "Linking Neovim config..."
 mkdir -p "$HOME/.config/nvim/lua/config"
 link "$DOTFILES_DIR/nvim/init.lua"                "$HOME/.config/nvim/init.lua"
 link "$DOTFILES_DIR/nvim/lua/config/lazy.lua"     "$HOME/.config/nvim/lua/config/lazy.lua"
+link "$DOTFILES_DIR/nvim/lua/plugins"             "$HOME/.config/nvim/lua/plugins"
 
 ### Yazi
 echo "Linking Yazi config..."
