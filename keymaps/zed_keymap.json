@@ -1,0 +1,21 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-d": "editor::SelectNext",
+      "shift-alt-=": "editor::SelectLargerSyntaxNode",
+      "ctrl-alt-right": "editor::SelectLargerSyntaxNode"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-w s": "project_panel::ToggleFocus",
+      "ctrl-o 0": "git_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {}
+  }
+]

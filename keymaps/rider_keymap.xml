@@ -1,0 +1,91 @@
+<keymap version="1" name="Visual Studio 2022 copy" parent="Visual Studio 2022">
+  <!--
+    Drop this file into: ~/.config/JetBrains/Rider<version>/keymaps/
+    Then select it in Settings > Keymap.
+    This is an exact copy of your customized keymap from the source installation.
+  -->
+
+  <!-- Open commit tool window: ctrl+o then 0, or ctrl+o then ctrl+0 -->
+  <action id="ActivateCommitToolWindow">
+    <keyboard-shortcut first-keystroke="ctrl o" second-keystroke="0" />
+    <keyboard-shortcut first-keystroke="ctrl o" second-keystroke="ctrl 0" />
+  </action>
+
+  <!-- Open project/solution tree: ctrl+w then s -->
+  <action id="ActivateProjectToolWindow">
+    <keyboard-shortcut first-keystroke="ctrl w" second-keystroke="s" />
+  </action>
+
+  <!-- Rider-specific: unbound -->
+  <action id="AssemblyDiffAction" />
+
+  <!-- Build whole solution: f6 -->
+  <action id="BuildWholeSolutionAction">
+    <keyboard-shortcut first-keystroke="f6" />
+  </action>
+
+  <!-- Unbound -->
+  <action id="CompareTwoFiles" />
+  <action id="Diff.ShowDiff" />
+  <action id="EditorDuplicate" />
+
+  <!-- Expand selection: shift+alt+= and ctrl+alt+right -->
+  <action id="EditorSelectWord">
+    <keyboard-shortcut first-keystroke="shift alt equals" />
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+  </action>
+
+  <!-- Unbound -->
+  <action id="FileChooser.GotoDesktop" />
+  <action id="OpenFile" />
+  <action id="RiderCoveringTestsPopupDebugSelectedTestsAction" />
+  <action id="RiderNuGetToggleDependenciesExpanderAction" />
+  <action id="RiderOpenSolution" />
+
+  <!-- Debug test under cursor: ctrl+r then ctrl+t -->
+  <action id="RiderUnitTestDebugContextAction">
+    <keyboard-shortcut first-keystroke="ctrl r" second-keystroke="ctrl t" />
+  </action>
+
+  <action id="RiderUnitTestDebugContextTwAction" />
+
+  <!-- Run test under cursor: ctrl+r then t -->
+  <action id="RiderUnitTestRunContextAction">
+    <keyboard-shortcut first-keystroke="ctrl r" second-keystroke="t" />
+  </action>
+
+  <!-- Run all tests in solution: ctrl+r then a -->
+  <action id="RiderUnitTestRunSolutionAction">
+    <keyboard-shortcut first-keystroke="ctrl r" second-keystroke="a" />
+  </action>
+
+  <!-- Select next occurrence: shift+alt+. and ctrl+d -->
+  <action id="SelectNextOccurrence">
+    <keyboard-shortcut first-keystroke="shift alt period" />
+    <keyboard-shortcut first-keystroke="ctrl d" />
+  </action>
+
+  <!-- Unbound -->
+  <action id="SendEOF" />
+
+  <!-- Smart select: shift+alt+= and ctrl+alt+right -->
+  <action id="SmartSelect">
+    <keyboard-shortcut first-keystroke="shift alt equals" />
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+  </action>
+
+  <!-- Table result actions -->
+  <action id="TableResult.GrowSelection">
+    <keyboard-shortcut first-keystroke="shift alt equals" />
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+  </action>
+  <action id="TableResult.SelectColumn">
+    <keyboard-shortcut first-keystroke="shift alt equals" />
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+  </action>
+
+  <!-- Unbound -->
+  <action id="Terminal.CloseSession" />
+  <action id="Terminal.DeletePreviousWord" />
+  <action id="UsageFiltering.WriteAccess" />
+</keymap>
