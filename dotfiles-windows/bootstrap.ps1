@@ -13,7 +13,10 @@ New-Item -ItemType Directory -Path $destDir -Force | Out-Null
 
 Copy-Item -Path "./home/fastfetch.config.jsonc" -Destination "$destDir/config.jsonc" -Force
 
-Copy-Item -Path ./nvim/** -Destination $home/.config/nvim -Recurse -Force
+$nvimDir = Join-Path $env:LOCALAPPDATA "nvim"
+New-Item -ItemType Directory -Path "$nvimDir/lua/plugins" -Force | Out-Null
+Copy-Item -Path ./nvim/* -Destination $nvimDir -Recurse -Force
+Copy-Item -Path ../dotfiles-linux/nvim/lua/plugins/* -Destination "$nvimDir/lua/plugins" -Recurse -Force
 
 # copy yazi folder to %appData%/yazi/config
 $yaziDestDir = Join-Path $env:APPDATA "\yazi\config"

@@ -56,6 +56,8 @@ choco install brave               --limit-output;
 # dev tools and frameworks
 choco install Fiddler             --limit-output
 choco install neovim                 --limit-output
+choco install ripgrep             --limit-output
+choco install zig                 --limit-output
 choco install winmerge            --limit-output
 choco install dotnet              --limit-output
 dotnet tool install --global dotnet-ef
@@ -79,10 +81,6 @@ choco install ffmpeg
 choco install 7zip
 
 Refresh-Environment
-
-# Install and configure Komorebi
-Write-Host "Installing Komorebi..." -ForegroundColor "Yellow"
-& "$PSScriptRoot\komorebi-install.ps1"
 
 # set up oh-my-posh
 oh-my-posh font install meslo
@@ -144,6 +142,7 @@ if (which npm) {
     npm update npm
     npm install -g gulp
     npm install -g mocha
+    npm install -g tree-sitter-cli
 }
 
 ### Janus for vim
