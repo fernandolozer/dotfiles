@@ -2,8 +2,10 @@
 # Sources all component files in order
 
 # Enable Powerlevel10k instant prompt. Must stay near the top of ~/.zshrc.
+# DISABLED: pasting during the instant-prompt window (before zle is ready) echoes
+# raw bracketed-paste markers (^[[200~ ... ^[[201~) onto the command line.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+  # source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
 DOTFILES_DIR="${0:A:h}"

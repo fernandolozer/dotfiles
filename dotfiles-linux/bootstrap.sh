@@ -40,6 +40,7 @@ echo "Linking Neovim config..."
 mkdir -p "$HOME/.config/nvim/lua/config"
 link "$DOTFILES_DIR/nvim/init.lua"                "$HOME/.config/nvim/init.lua"
 link "$DOTFILES_DIR/nvim/lua/config/lazy.lua"     "$HOME/.config/nvim/lua/config/lazy.lua"
+link "$DOTFILES_DIR/nvim/lua/plugins"             "$HOME/.config/nvim/lua/plugins"
 
 ### Yazi
 echo "Linking Yazi config..."
@@ -47,13 +48,18 @@ mkdir -p "$HOME/.config/yazi"
 link "$DOTFILES_DIR/yazi/yazi.toml"               "$HOME/.config/yazi/yazi.toml"
 link "$DOTFILES_DIR/yazi/theme.toml"              "$HOME/.config/yazi/theme.toml"
 
+### Zed
+echo "Linking Zed keymap..."
+mkdir -p "$HOME/.config/zed"
+link "$(dirname "$DOTFILES_DIR")/zed/keymap.json" "$HOME/.config/zed/keymap.json"
+
 ### Zsh
 echo "Setting up zsh..."
 if ! command -v zsh &>/dev/null; then
     sudo dnf install -y zsh
 fi
 if [ "$SHELL" != "$(which zsh)" ]; then
-    chsh -s "$(which zsh)"
+    sudo chsh -s "$(which zsh)" "$USER"
     echo "Default shell set to zsh — log out and back in for it to take effect"
 else
     echo "zsh already the default shell"

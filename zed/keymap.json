@@ -1,0 +1,31 @@
+[
+	{
+		"context": "Workspace",
+		"bindings": {
+			"ctrl-w": null,
+			"ctrl-o": null,
+			"ctrl-w s": "project_panel::ToggleFocus",
+			"ctrl-w ctrl-s": "project_panel::ToggleFocus",
+			"ctrl-o 0": "git_panel::ToggleFocus",
+			"ctrl-o ctrl-0": "git_panel::ToggleFocus"
+		}
+	},
+	{
+		"context": "Pane",
+		"bindings": {
+			"ctrl-w": null,
+			"ctrl-w s": "project_panel::ToggleFocus",
+			"ctrl-w ctrl-s": "project_panel::ToggleFocus",
+			"ctrl-o 0": "git_panel::ToggleFocus",
+			"ctrl-o ctrl-0": "git_panel::ToggleFocus"
+		}
+	},
+	{
+		"context": "Editor",
+		"bindings": {
+			"f12": "editor::GoToDefinition",
+			"ctrl-f12": "editor::GoToImplementation",
+			"shift-f12": "editor::FindAllReferences"
+		}
+	}
+]
